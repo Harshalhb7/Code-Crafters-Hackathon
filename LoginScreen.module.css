@@ -1,0 +1,45 @@
+.screen {
+  position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(160deg, #f0f7ee 0%, #e8f5e9 50%, #e3f2fd 100%); z-index: 10;
+  padding: 20px;
+}
+.card {
+  background: #fff; border-radius: 28px; padding: 40px 28px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  width: 100%; max-width: 420px; text-align: center; border: 1px solid #dcfce7;
+}
+.header { margin-bottom: 32px; }
+.avatar { font-size: 4rem; margin-bottom: 16px; display: inline-block; }
+.title { font-size: 1.6rem; font-weight: 700; color: #15803d; margin-bottom: 6px; }
+.desc { font-size: 1rem; color: #6b7280; }
+.form { text-align: left; }
+.label { display: block; font-size: 0.95rem; font-weight: 600; color: #374151; margin-bottom: 8px; }
+.inputWrap {
+  display: flex; align-items: center; background: #f9fafb; border: 2px solid #e5e7eb;
+  border-radius: 14px; overflow: hidden; transition: all 0.3s;
+}
+.inputWrap:focus-within { border-color: #4ade80; box-shadow: 0 0 0 4px rgba(34,197,94,0.1); }
+.prefix {
+  padding: 16px 14px; font-size: 1.1rem; font-weight: 600; color: #6b7280;
+  background: #f3f4f6; border-right: 2px solid #e5e7eb; user-select: none;
+}
+.input {
+  flex: 1; padding: 16px 14px; font-size: 1.25rem; font-weight: 600;
+  font-family: var(--font); color: #1f2937; background: transparent;
+  border: none; outline: none; letter-spacing: 2px;
+}
+.input::placeholder { color: #d1d5db; }
+.hint { font-size: 0.8rem; color: #9ca3af; margin-top: 6px; min-height: 1.2em; transition: color 0.3s; }
+.hintError { color: #ef4444; animation: shake 0.4s; }
+@keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 50% { transform: translateX(6px); } 75% { transform: translateX(-4px); } }
+.loginBtn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; padding: 16px; margin-top: 20px;
+  background: linear-gradient(135deg, #22c55e, #16a34a); color: #fff;
+  font-family: var(--font); font-size: 1.15rem; font-weight: 600;
+  border: none; border-radius: 60px; cursor: pointer;
+  box-shadow: 0 4px 20px rgba(22,163,74,0.35);
+}
+.arrow { font-size: 1.3rem; }
+.footer { font-size: 0.85rem; color: #9ca3af; margin-top: 24px; }
+
+@media (min-width: 768px) { .card { padding: 48px 40px; } }

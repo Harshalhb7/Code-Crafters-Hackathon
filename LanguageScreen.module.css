@@ -1,0 +1,152 @@
+/* ═══════════════════════════════════════
+   LanguageScreen — Farmer-Friendly Design
+═══════════════════════════════════════ */
+.screen {
+  position: fixed; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(160deg, #e3f2fd 0%, #e8f8ff 30%, #f0fdf4 60%, #e3f2fd 100%);
+  z-index: 10;
+  overflow: hidden;
+}
+
+/* ── Background drops ── */
+.bgDrops { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.bgDrop {
+  position: absolute; opacity: 0.08;
+  animation: bgDropFloat var(--dur) ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+@keyframes bgDropFloat {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.06; }
+  50%      { transform: translateY(-20px) scale(1.15); opacity: 0.12; }
+}
+
+/* ── Inner container ── */
+.inner {
+  width: 100%; max-width: 480px;
+  padding: 36px 24px;
+  display: flex; flex-direction: column; align-items: center;
+  position: relative; z-index: 1;
+}
+
+/* ── Corner decorations ── */
+.cornerTL, .cornerTR, .cornerBL, .cornerBR {
+  position: fixed; font-size: 2.8rem; opacity: 0.08;
+  animation: leafSway 6s ease-in-out infinite;
+}
+.cornerTL { top: 24px; left: 24px; }
+.cornerTR { top: 24px; right: 24px; transform: scaleX(-1); animation-delay: -1.5s; }
+.cornerBL { bottom: 24px; left: 24px; animation-delay: -3s; }
+.cornerBR { bottom: 24px; right: 24px; transform: scaleX(-1); animation-delay: -4.5s; }
+@keyframes leafSway {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-8px) rotate(6deg); }
+}
+.cornerTR, .cornerBR {
+  animation-name: leafSwayMirror;
+}
+@keyframes leafSwayMirror {
+  0%, 100% { transform: scaleX(-1) translateY(0) rotate(0deg); }
+  50%      { transform: scaleX(-1) translateY(-8px) rotate(-6deg); }
+}
+
+/* ── Logo area ── */
+.logo { text-align: center; margin-bottom: 36px; }
+.dropIcon {
+  font-size: 4.2rem;
+  margin-bottom: 10px;
+  display: inline-block;
+  filter: drop-shadow(0 0 16px rgba(59,130,246,0.35));
+}
+.appName {
+  font-size: 2.6rem; font-weight: 900;
+  color: #15803d; letter-spacing: -0.5px;
+  text-shadow: 0 2px 8px rgba(21,128,61,0.15);
+}
+.appSub {
+  font-size: 0.95rem; color: #6b7280;
+  font-weight: 500; margin-top: 4px; letter-spacing: 1px;
+}
+
+/* ── Prompt area ── */
+.promptArea { text-align: center; margin-bottom: 32px; }
+.promptIcon {
+  font-size: 2rem; margin-bottom: 8px;
+  display: inline-block;
+}
+.prompt {
+  font-size: 1.3rem; color: #374151;
+  font-weight: 600;
+}
+.promptHint {
+  font-size: 0.85rem; color: #9ca3af;
+  font-weight: 400; margin-top: 4px;
+}
+
+/* ── Language buttons ── */
+.buttons {
+  display: flex; flex-direction: column;
+  gap: 14px; width: 100%;
+}
+.langBtn {
+  display: flex; align-items: center; gap: 16px;
+  padding: 22px 24px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  border: 2px solid rgba(187,247,208,0.6);
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  text-align: left;
+}
+.langBtn:hover {
+  border-color: #4ade80;
+  box-shadow: 0 8px 24px rgba(34,197,94,0.15);
+  background: rgba(255,255,255,0.95);
+}
+.langFlag { font-size: 2rem; flex-shrink: 0; }
+.langText { flex: 1; display: flex; flex-direction: column; }
+.langLabel {
+  font-size: 1.4rem; font-weight: 700;
+  color: #166534; line-height: 1.3;
+}
+.langDesc {
+  font-size: 0.8rem; color: #9ca3af;
+  font-weight: 400; margin-top: 2px;
+}
+.langArrow {
+  font-size: 1.3rem; color: #86efac;
+  font-weight: 600;
+  transition: transform 0.3s, color 0.3s;
+}
+.langBtn:hover .langArrow {
+  transform: translateX(4px);
+  color: #16a34a;
+}
+
+/* ── Footer ── */
+.footerHint {
+  font-size: 0.8rem; color: #9ca3af;
+  margin-top: 40px; text-align: center;
+}
+
+/* ═══════════════ Responsive ═══════════════ */
+@media (min-width: 768px) {
+  .buttons { flex-direction: row; max-width: 600px; gap: 16px; }
+  .langBtn {
+    flex: 1; flex-direction: column; text-align: center;
+    padding: 32px 16px; gap: 10px; align-items: center;
+  }
+  .langText { align-items: center; }
+  .langLabel { text-align: center; }
+  .langArrow { display: none; }
+  .langFlag { font-size: 2.4rem; }
+}
+
+@media (max-width: 380px) {
+  .appName { font-size: 2.2rem; }
+  .langBtn { padding: 18px 20px; }
+  .langLabel { font-size: 1.2rem; }
+}
